@@ -6,7 +6,7 @@ var PlayerDB = require('../lib/playerdb');
 
 var player = new PlayerDB();
 
-router.get('/data', function(req, res) {
+router.get('/channel', function(req, res) {
   res.header("Access-Control-Allow-Origin", "*");
 
 	player.getData(function(err, results) {
@@ -14,7 +14,7 @@ router.get('/data', function(req, res) {
   });
 });
 
-router.get('/data/:skipNum/:limitNum', function(req, res) {
+router.get('/channel/:skipNum/:limitNum', function(req, res) {
   res.header("Access-Control-Allow-Origin", "*");
 
 	player.getDataByLimit(req.params, function(err, results) {
