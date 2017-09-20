@@ -1,0 +1,7 @@
+# dependencies
+/node_modules
+
+# import
+ignore/
+
+npm-debug.log*
