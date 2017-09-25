@@ -31,4 +31,12 @@ router.get('/video/:id', function(req, res) {
   });
 });
 
+router.get('/searchName/:name', function(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+
+  player.searchByName(req.params, function(err, results) {
+    res.send(results);
+  });
+});
+
 module.exports = router;
