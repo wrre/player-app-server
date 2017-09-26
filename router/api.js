@@ -6,9 +6,9 @@ var PlayerDB = require('../lib/playerdb');
 
 var player = new PlayerDB();
 
-router.get('/*',function(req,res,next){
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
+router.get('/*', function(req,res,next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 router.get('/channel', function(req, res) {
