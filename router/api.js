@@ -6,24 +6,24 @@ var PlayerDB = require('../lib/playerdb');
 
 var player = new PlayerDB();
 
-router.get('/channel', function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
+router.get('/*',function(req,res,next){
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+});
 
+router.get('/channel', function(req, res) {
 	player.getData(function(err, results) {
     res.send(results);
   });
 });
 
 router.get('/channel/:skipNum/:limitNum', function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-
 	player.getDataByLimit(req.params, function(err, results) {
     res.send(results);
   });
 });
 
 router.get('/video/:id', function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
   var URI = config.video.uri + req.params.id;
 
   request(URI, function (error, response, body) {
@@ -32,8 +32,6 @@ router.get('/video/:id', function(req, res) {
 });
 
 router.get('/searchName/:name', function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-
   player.searchByName(req.params, function(err, results) {
     res.send(results);
   });
